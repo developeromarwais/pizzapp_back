@@ -16,6 +16,7 @@ class PizzaController extends Controller
         return $pizza;
     }
 
+    //TEST
     public function store(Request $request)
     {
         //pizza = Pizza::create($request->all());
