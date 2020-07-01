@@ -16,7 +16,7 @@ class PizzaController extends Controller
         return $pizza;
     }
 
-    //TEST CI/CD Another Test
+    
     public function store(Request $request)
     {
         //pizza = Pizza::create($request->all());
