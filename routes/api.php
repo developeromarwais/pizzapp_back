@@ -26,3 +26,17 @@ Route::get('pizzas/{pizza}', 'PizzaController@show');
 Route::post('pizzas', 'PizzaController@store');
 Route::put('pizzas/{pizza}', 'PizzaController@update');
 Route::delete('pizzas/{pizza}', 'PizzaController@delete');
+
+
+
+Route::get('carts', 'CartController@index');
+Route::get('carts/{cart}', 'CartController@show');
+Route::post('carts', 'CartController@store');
+Route::put('carts/{cart}', 'CartController@update');
+Route::delete('carts/{cart}', 'CartController@delete');
+
+Route::get('cart_details', 'Cart_detailController@index');
+Route::get('cart_details/{cart_detail}', 'Cart_detailController@show');
+Route::post('cart_details', 'Cart_detailController@store');
+Route::put('cart_details/{cart_detail}', 'Cart_detailController@update');
+Route::delete('cart_details/{cart_detail}', 'Cart_detailController@delete');
