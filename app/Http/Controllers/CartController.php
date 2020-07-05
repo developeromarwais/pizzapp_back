@@ -3,6 +3,7 @@
 namespace App\Http\Controllers; 
 use Illuminate\Http\Request;
 use App\Cart;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class CartController extends Controller
@@ -16,6 +17,17 @@ class CartController extends Controller
     {
         return $cart;
     }
+
+    public function getCartDetails(Cart $cart)
+    {
+        $cart_details = DB::table('cart_details')->where('cartId', $cart->id)
+        ->join('pizzas', 'cart_details.pizzaId', '=', 'pizzas.id')
+        ->select('cart_details.*', 'pizzas.*', 'cart_details.id', 'cart_details.created_at')
+        ->get();
+        return $cart_details;
+    }
+
+    
 
     public function store(Request $request)
     {
@@ -34,7 +46,6 @@ class CartController extends Controller
     public function delete(Cart $cart)
     {
         $cart->delete();
-
         return response()->json(null, 204);
     }
 }

@@ -31,6 +31,7 @@ Route::delete('pizzas/{pizza}', 'PizzaController@delete');
 
 Route::get('carts', 'CartController@index');
 Route::get('carts/{cart}', 'CartController@show');
+Route::get('carts/getCartDetails/{cart}', 'CartController@getCartDetails');
 Route::post('carts', 'CartController@store');
 Route::put('carts/{cart}', 'CartController@update');
 Route::delete('carts/{cart}', 'CartController@delete');
