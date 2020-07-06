@@ -20,8 +20,12 @@ class CartController extends Controller
 
     public function getCartDetails(Cart $cart)
     {
-        $cart_details = DB::table('cart_details')->where('cartId', $cart->id)
+        $cart_details = DB::table('cart_details')->where([
+            ['cartId', '=', $cart->id],
+            ['carts.status', '=', 'Open'], 
+        ])
         ->join('pizzas', 'cart_details.pizzaId', '=', 'pizzas.id')
+        ->join('carts', 'cart_details.cartId', '=', 'carts.id')
         ->select('cart_details.*', 'pizzas.*', 'cart_details.id', 'cart_details.created_at')
         ->get();
         return $cart_details;
