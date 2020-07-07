@@ -44,8 +44,7 @@ Route::post('cart_details', 'Cart_detailController@store');
 Route::put('cart_details/{cart_detail}', 'Cart_detailController@update');
 Route::delete('cart_details/{cart_detail}', 'Cart_detailController@delete');
 
-Route::get('orders', 'OrderController@index');
-Route::get('orders/{order}', 'OrderController@show');
+
 Route::post('orders', 'OrderController@store');
-Route::put('orders/{order}', 'OrderController@update');
-Route::delete('orders/{order}', 'OrderController@delete');
+Route::middleware('auth:api')->get('userorders', 'OrderController@getUserOrders');
+Route::middleware('auth:api')->get('orderdetails/{order}', 'OrderController@getOrderDetails');
