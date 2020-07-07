@@ -20,6 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
  
+Route::post('register', 'Auth\RegisterController@register');
+
+Route::post('login', 'Auth\LoginController@login');
+Route::middleware('auth:api')->post('logout', 'Auth\LoginController@logout');
 
 Route::get('pizzas', 'PizzaController@index');
 Route::get('pizzas/{pizza}', 'PizzaController@show');
