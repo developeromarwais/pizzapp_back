@@ -10,6 +10,7 @@ class OrderController extends Controller
 {
      
 
+    //Get all orders for a spicific User
     public function getUserOrders()
     {
         $orders = DB::table('orders')->where([
@@ -21,7 +22,7 @@ class OrderController extends Controller
         return $orders;
     } 
   
-
+    //Get cart and cart details for a spicif order
     public function getOrderDetails(Order $order)
     {
         $cart_details = DB::table('cart_details')->where([
@@ -36,7 +37,7 @@ class OrderController extends Controller
         return $cart_details;
     } 
   
-
+    //insert new order
     public function store(Request $request)
     {
         $Order = Order::create($request->all());

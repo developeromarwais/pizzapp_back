@@ -8,16 +8,21 @@ use Illuminate\Support\Str;
 
 class CartController extends Controller
 {
+    //Show all carts
     public function index()
     {
         return Cart::all();
     }
 
+
+    //Show one cart
     public function show(Cart $cart)
     {
         return $cart;
     }
 
+
+    //getCartDetails for getting the cart items for a spicfic cart
     public function getCartDetails(Cart $cart)
     {
         $cart_details = DB::table('cart_details')->where([
@@ -32,7 +37,7 @@ class CartController extends Controller
     }
 
     
-
+    //insert new cart
     public function store(Request $request)
     {
         $cart = Cart::create($request->all());
@@ -40,6 +45,7 @@ class CartController extends Controller
         return response()->json($cart, 201);
     }
 
+    //update cart
     public function update(Request $request, Cart $cart)
     {
         $cart->update($request->all());
@@ -47,6 +53,7 @@ class CartController extends Controller
         return response()->json($cart, 200);
     }
 
+    //delete cart
     public function delete(Cart $cart)
     {
         $cart->delete();
